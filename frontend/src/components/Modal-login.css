@@ -1,0 +1,39 @@
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+}
+
+.modal-content {
+  width: 400px;
+  background-color: #28242c; /* Replace with your desired color */
+  color: #ffffff; /* Optional: Adjust text color for better contrast */
+  border-radius: 10%;
+  align-items: center;
+  padding: 20px; /* Add padding for better spacing */
+}
+
+.modal-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center; /* Center the title */
+  align-items: center; /* Align items vertically */
+  position: relative; /* Allow positioning of the close button */
+}
+
+.modal-header .btn-close {
+  position: absolute; /* Position the close button */
+  right: 10px; /* Adjust distance from the right edge */
+  top: 10px; /* Adjust distance from the top edge */
+  color: #ffffff; /* Optional: Adjust close button color */
+}

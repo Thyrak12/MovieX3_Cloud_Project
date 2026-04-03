@@ -1,0 +1,9 @@
+function CreateAcc() {
+
+    return(
+        <>
+        
+        </>
+    )
+}
+export default CreateAcc

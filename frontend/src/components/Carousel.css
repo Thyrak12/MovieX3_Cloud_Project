@@ -1,0 +1,30 @@
+/* No edit */
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.carousel-item img {
+  width: 100%;
+  object-fit: cover;
+  /* Ensure image takes the full width */
+}
+
+@media (min-width: 1000px) {
+  .carousel-item img {
+    height: 580px;
+    /* Larger height for desktop screens */
+  }
+
+  .carousel-caption h5 {
+    font-size: 2rem;
+    /* Larger title font size */
+  }
+
+  .carousel-caption p {
+    font-size: 1.5rem;
+    /* Larger description font size */
+  }
+}
+
+/* No edit */

@@ -1,0 +1,120 @@
+/* No editting */
+.Card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+/* Picture Grid: Two boxes with images */
+.Card-Picture {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    /* Two columns */
+    gap: 50px;
+    /* Space between boxes */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Box 1: Image Styling */
+.Box1,
+.Box2 {
+    width: 100%;
+    height: 25rem;
+    /* Adjust based on your desired image size */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgb(59, 59, 59);
+}
+
+/* Box 1 and Box 2 Images */
+.Box1 img,
+.Box2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Makes sure the image covers the box properly */
+}
+
+/* Card Info: Movie Title and Details */
+.Card-Info {
+    text-align: start;
+    width: 100%;
+    color: white;
+}
+
+.Card-Info h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.Card-Info h5 {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.Card-Info p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (min-width: 1600px) {
+
+    .Box1,
+    .Box2 {
+        width: 100%;
+        height: 30rem;
+        /* Adjust based on your desired image size */
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgb(59, 59, 59);
+    }
+}
+
+@media (max-width: 1300px) {
+    .Card-Picture {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        /* Two columns */
+    }
+}
+
+@media (max-width: 1200px) {
+    .Card-Picture {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        /* Two columns */
+    }
+}
+
+@media (max-width: 1000px) {
+    .Card-Picture {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* One column */
+    }
+
+    .Box1 {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .Card-Picture {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* One column */
+    }
+
+    .Box1 {
+        display: none;
+    }
+
+    .Box2 {
+        height: 15rem;
+    }
+}
+
+/* No edditing */
