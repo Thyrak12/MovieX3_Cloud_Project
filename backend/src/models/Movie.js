@@ -18,12 +18,9 @@ const mapMovieRows = (rows) => {
         rating: row.rating,
         summary: row.summary,
         poster_url: row.poster_url,
-        poster_original_url: row.poster_original_url,
-        premiere_date: row.premiere_date,
         trailer_url: row.trailer_url,
-        tvmaze_id: row.tvmaze_id,
+        release_year: row.release_year,
         created_at: row.created_at,
-        updated_at: row.updated_at,
         categories: [],
       });
     }
@@ -129,42 +126,38 @@ export const getMoviesByCategory = async (categoryId) => {
 };
 
 export const addMovie = async (movieData) => {
-  const { title, rating, summary, poster_url, poster_original_url, premiere_date, trailer_url, tvmaze_id } = movieData;
+  const { title, rating, summary, poster_url, trailer_url, release_year } = movieData;
 
   if (!databaseAvailable) {
     return {
-      id: tvmaze_id || Date.now(),
+      id: Date.now(),
       title,
       rating,
       summary,
       poster_url,
-      poster_original_url,
-      premiere_date,
       trailer_url,
-      tvmaze_id,
+      release_year,
       categories: [],
     };
   }
 
   try {
     const [result] = await pool.query(
-      `INSERT INTO movies (title, rating, summary, poster_url, poster_original_url, premiere_date, trailer_url, tvmaze_id)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [title, rating, summary, poster_url, poster_original_url, premiere_date, trailer_url, tvmaze_id]
+      `INSERT INTO movies (title, rating, summary, poster_url, trailer_url, release_year)
+       VALUES (?, ?, ?, ?, ?, ?)`,
+      [title, rating, summary, poster_url, trailer_url, release_year]
     );
     return getMovieById(result.insertId);
   } catch (error) {
     markDatabaseUnavailable();
     return {
-      id: tvmaze_id || Date.now(),
+      id: Date.now(),
       title,
       rating,
       summary,
       poster_url,
-      poster_original_url,
-      premiere_date,
       trailer_url,
-      tvmaze_id,
+      release_year,
       categories: [],
     };
   }

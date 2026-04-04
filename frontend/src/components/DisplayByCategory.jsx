@@ -58,7 +58,7 @@ function DisplayByCategory() {
             <Col key={movie.id}>
               <MovieCard
                 onClick={() => navigate(`/movie/${movie.id}`)}
-                url={movie.poster_url || movie.poster_original_url || 'https://via.placeholder.com/300'}
+                url={movie.poster_url || 'https://via.placeholder.com/300'}
                 title={movie.title}
               />
             </Col>

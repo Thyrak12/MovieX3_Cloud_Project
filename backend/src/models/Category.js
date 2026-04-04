@@ -23,8 +23,6 @@ export const getCategoryById = async (id) => {
     return getMockCategoryById(id);
   }
 
-  const query = 'SELECT * FROM categories WHERE id = $1';
-
   try {
     const [rows] = await pool.query('SELECT * FROM categories WHERE id = ?', [id]);
     return rows[0];

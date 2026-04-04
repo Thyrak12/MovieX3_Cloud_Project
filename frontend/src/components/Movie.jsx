@@ -54,7 +54,7 @@ const Movie = () => {
       <div className='Card-container'>
         <div className='Card-Picture'>
           <div className='Box1'>
-            <img src={movie.poster_original_url || movie.poster_url} alt={movie.title} />
+            <img src={movie.poster_url} alt={movie.title} />
           </div>
           <div className='Box2'>
             {movie.trailer_url ? (
@@ -72,7 +72,7 @@ const Movie = () => {
 
         <div className='Card-Info'>
           <h3>{movie.title}</h3>
-          <h5>Release Date: {movie.premiere_date || 'N/A'}</h5>
+          <h5>Release Year: {movie.release_year || 'N/A'}</h5>
           <h5>Rating: {movie.rating || 'N/A'}</h5>
           <hr />
           <h5>Summary:</h5>

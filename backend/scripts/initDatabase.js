@@ -21,12 +21,13 @@ const initDatabase = async () => {
     
     // Insert default categories
     const categories = ['Latest Movies', 'Action Movies', 'Dramas', 'Sci-Fi'];
-    
+    const [existingRows] = await pool.query('SELECT name FROM categories');
+    const existingNames = new Set(existingRows.map((row) => row.name));
+
     for (const category of categories) {
-      await pool.query(
-        'INSERT IGNORE INTO categories (name) VALUES (?)',
-        [category]
-      );
+      if (!existingNames.has(category)) {
+        await pool.query('INSERT INTO categories (name) VALUES (?)', [category]);
+      }
     }
     
     console.log('✅ Categories inserted');

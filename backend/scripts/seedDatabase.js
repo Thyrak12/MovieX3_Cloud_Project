@@ -55,9 +55,8 @@ const fetchMovieFromTVMaze = async (title) => {
       rating: data.rating?.average || null,
       summary: data.summary || null,
       poster_url: data.image?.medium || null,
-      poster_original_url: data.image?.original || null,
-      premiere_date: data.premiered || null,
-      tvmaze_id: data.id
+      trailer_url: null,
+      release_year: data.premiered ? new Date(data.premiered).getFullYear() : null,
     };
   } catch (error) {
     console.warn(`⚠️  Could not fetch ${title} from TVMaze: ${error.message}`);
@@ -93,7 +92,7 @@ const seedDatabase = async () => {
         tvmazeData.trailer_url = movieInfo.trailer;
         
         // Check if movie already exists
-        const [existingRows] = await pool.query('SELECT id FROM movies WHERE tvmaze_id = ?', [tvmazeData.tvmaze_id]);
+        const [existingRows] = await pool.query('SELECT id FROM movies WHERE title = ?', [tvmazeData.title]);
         
         let movieId;
         if (existingRows.length > 0) {
@@ -102,10 +101,10 @@ const seedDatabase = async () => {
         } else {
           // Insert movie
           const [insertResult] = await pool.query(
-            `INSERT INTO movies (title, rating, summary, poster_url, poster_original_url, premiere_date, trailer_url, tvmaze_id)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+            `INSERT INTO movies (title, rating, summary, poster_url, trailer_url, release_year)
+             VALUES (?, ?, ?, ?, ?, ?)`,
             [tvmazeData.title, tvmazeData.rating, tvmazeData.summary, tvmazeData.poster_url, 
-             tvmazeData.poster_original_url, tvmazeData.premiere_date, tvmazeData.trailer_url, tvmazeData.tvmaze_id]
+             tvmazeData.trailer_url, tvmazeData.release_year]
           );
           movieId = insertResult.insertId;
           console.log(`   ✅ Added ${movieTitle}`);
