@@ -1,0 +1,7 @@
+aws_region       = "ap-southeast-1"
+instance_type    = "t3.micro"
+key_name         = "moviex3_project"
+ssh_allowed_cidr = "0.0.0.0/0"
+bucket_name      = "moviex3-images-bucket-123456"
+db_username      = "admin"
+db_password      = "ChangeMe123!"
