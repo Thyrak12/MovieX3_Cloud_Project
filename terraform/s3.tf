@@ -1,8 +1,19 @@
 resource "aws_s3_bucket" "images" {
-  bucket = var.bucket_name
+  bucket = "moviex3-images-bucket-123456"
 
   tags = {
-    Name = var.bucket_name
+    Name = "moviex3-images-bucket-123456"
+  }
+}
+
+# Enable server-side encryption
+resource "aws_s3_bucket_server_side_encryption_configuration" "images" {
+  bucket = aws_s3_bucket.images.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
   }
 }
 
@@ -14,3 +25,4 @@ resource "aws_s3_bucket_public_access_block" "images" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
+
